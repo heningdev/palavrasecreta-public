@@ -1,0 +1,224 @@
+/* Reset e configuração básica do body */
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Container principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Estilo do Header */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin: 0;
+  color: #333;
+}
+
+/* Conteúdo principal */
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 80vw;
+  padding: 20px;
+}
+
+section {
+  width: 50%;
+  padding: 20px;
+}
+
+/* Botões */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 50%;
+  margin-left: 20%;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.content-jogo,
+.content-ranking {
+  align-self: flex-start;
+}
+
+/* Tabela de Ranking */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+/* Ícone de reload */
+.fas.fa-sync-alt {
+  font-size: 1em;
+  color: #333;
+  cursor: pointer;
+}
+
+.text-att {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.btn-att {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.15em;
+}
+
+/* Animação de rotação */
+.spin {
+  animation: rotate 0.3s infinite linear;
+}
+
+/* Keyframes para a animação de rotação */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(90deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Estilo dos Inputs */
+input[type="text"],
+select {
+  width: calc(50% - 22px);
+  padding: 10px;
+  margin: 10px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Estilo dos Labels */
+label {
+  font-size: 1.2em;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container de Formulário */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilo da mensagem de erro */
+.erro {
+  color: red;
+  margin-top: 10px;
+  font-size: 1em
+}
+
+/* Estilo das letras da palavra secreta */
+.palavra-secreta {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.letra {
+  border: 3px solid #333;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 0 10px;
+  width: 50px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.letra-correta {
+  background-color: #4CAF50;
+  transform: scale(1.1);
+}
+
+.letra-errada {
+  background-color: #f44336;
+  transform: scale(0.9);
+}
+
+/* Imagem Personagem */
+img {
+  width: 40%;
+  height: 40%;
+  margin-left: 25%;
+}
