@@ -38,6 +38,12 @@ const DocumentacaoUsuario = () => (
         ranking global dos jogadores.
       </li>
     </ol>
+    <h2>Pontuação</h2>
+    <p>
+      Se você descobrir a palavra em menos de 60 segundos, ganha um bônus por
+      tempo, podendo chegar até 200 pontos adicionais. A pontuação mínima
+      garantida é de 100 pontos.
+    </p>
     <h2>Requisitos</h2>
     <ul>
       <li>Navegador Web atualizado</li>
