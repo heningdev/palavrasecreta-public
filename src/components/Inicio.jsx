@@ -35,6 +35,10 @@ const Inicio = ({ onStart }) => {
             <option value="">Selecione uma categoria</option>
             <option value="frutas">Frutas</option>
             <option value="animais">Animais</option>
+            <option value="paises">Países</option>
+            <option value="cores">Cores</option>
+            <option value="profissoes">Profissões</option>
+            <option value="objetos">Objetos</option>
           </select>
         </label>
         {erro && <p className="erro">{erro}</p>}
