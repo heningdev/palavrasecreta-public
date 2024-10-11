@@ -4,9 +4,8 @@ import gifsErrou from "../assets/Smolverse/errou/errouImages";
 import gifsAcertou from "../assets/Smolverse/acertou/acertouImages";
 import gifsVitoria from "../assets/Smolverse/vitoria/vitoriaImages";
 import gifsDerrota from "../assets/Smolverse/derrota/derrotaImages";
-import iconGame from "../assets/icons/game.svg";
-import iconMenu from "../assets/icons/menu.svg";
 import { palavrasPorCategoria } from "../data/data";
+import { IoArrowUndo, IoPlay } from "react-icons/io5";
 
 // Função para obter uma imagem aleatória
 const obterImagemAleatoria = (imagens) => {
@@ -197,11 +196,11 @@ const Jogo = ({ nome, categoria, onVoltar, onJogarNovamente }) => {
         {fimDeJogo && (
           <div className="container-btn">
             <button onClick={onJogarNovamente}>
-              <img src={iconGame} alt="Trocar Nome Icone" className="icon" />
+              <IoPlay className="icon" />
               Jogar Novamente
             </button>
             <button onClick={onVoltar}>
-              <img src={iconMenu} alt="Trocar Nome Icone" className="icon" />
+              <IoArrowUndo className="icon" />
               Voltar
             </button>
           </div>

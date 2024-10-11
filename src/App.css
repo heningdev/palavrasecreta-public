@@ -155,6 +155,12 @@ tr:hover {
   cursor: pointer;
 }
 
+.page-rank {
+  display: flex;
+  flex-direction: column;
+  gap: .2em;
+}
+
 .text-att {
   font-size: 1em;
   font-weight: 400;
@@ -180,10 +186,11 @@ tr:hover {
   align-items: center;
   text-align: center;
   gap: 0.25em;
-  width: 80%;
+  width: 25%;
+  height: 40px;
   border: 1px green solid;
   background: #D4EDDA;
-  margin-left: 9%;
+  right: 10px;
 }
 
 .btn-att:hover {
@@ -495,7 +502,7 @@ p .mensagem-feedback {
 }
 
 .modal-conteudo {
-  margin-top: 25%;
+  margin-top: 32%;
   margin-bottom: 1%;
   border: 1px red solid;
   background-color: #ffffff;
@@ -588,8 +595,8 @@ p .mensagem-feedback {
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
+  font-size: 1.2em;
   margin-right: 8px;
   vertical-align: middle;
+  color: #fff;
 }

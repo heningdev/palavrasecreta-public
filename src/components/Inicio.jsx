@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import iconUser from "../assets/icons/users.svg";
-import iconGame from "../assets/icons/game.svg";
+import { IoPeopleSharp, IoPlay } from "react-icons/io5";
 
 const Inicio = ({ onStart }) => {
   const [nome, setNome] = useState("");
@@ -62,12 +61,12 @@ const Inicio = ({ onStart }) => {
         </label>
         {erro && <p className="erro">{erro}</p>} {/* Exibe erro se houver */}
         <button type="button" onClick={handleStart}>
-          <img src={iconGame} alt="Trocar Nome Icone" className="icon" />{" "}
+          <IoPlay className="icon" />
           Iniciar Jogo
         </button>
         <button className="btn-nome" type="button" onClick={() => setNome("")}>
-          <img src={iconUser} alt="Trocar Nome Icone" className="icon" /> Trocar
-          Nome
+          <IoPeopleSharp className="icon" />
+          Trocar Nome
         </button>
       </form>
     </div>

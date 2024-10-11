@@ -25,7 +25,7 @@ const Ranking = () => {
   }, []);
 
   return (
-    <div>
+    <div className="page-rank">
       <h1 className="titulo-ranking">Ranking</h1>
       <button className="btn-att" onClick={fetchRanking}>
         <i className={`fas fa-sync-alt ${loading ? "spin" : ""}`}></i>
