@@ -182,6 +182,7 @@ select {
   background: #CCE5FF;
   padding: 10px;
   border-radius: 8px;
+  border: 1px #B8DAFF solid;
 }
 
 /* Estilo dos Labels */
@@ -245,6 +246,14 @@ form {
   transform: scale(0.9);
 }
 
+.palpites {
+  padding: 2px 8px;
+  letter-spacing: 5px;
+  background: #FFF3CD;
+  border-radius: 4px;
+  border: 1px #FFEEBA solid;
+}
+
 /* Imagem Personagem */
 img {
   width: 40%;
@@ -268,4 +277,19 @@ p .mensagem-feedback {
 
 .mensagem-derrota {
   color: red;
+}
+
+.tentativas {
+  background: #FFF3CD;
+  border: 2px #721C24 solid;
+  color: #721C24;
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.categoria-info {
+  border: 2px solid #E2E3E5;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #333
 }
