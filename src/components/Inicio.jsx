@@ -16,7 +16,7 @@ const Inicio = ({ onStart }) => {
 
   return (
     <div>
-      <h1>Bem-vindo ao Jogo da Palavra Secreta</h1>
+      <h1></h1>
       <form>
         <label>
           Nome:

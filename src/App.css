@@ -58,6 +58,7 @@ button {
   transition: background-color 0.3s ease;
   width: 50%;
   margin-left: 20%;
+  margin-top: 5%;
 }
 
 button:hover {
@@ -161,6 +162,28 @@ select {
   box-sizing: border-box;
 }
 
+.input-do-jogo input {
+  width: calc(15% - 22px);
+  height: 4.5rem;
+  font-size: 3em;
+  text-align: center;
+  margin-left: 1.5%;
+}
+
+.input-do-jogo {
+  display: flex;
+  gap: 1em;
+  text-align: center;
+  align-items: center;
+}
+
+.input-do-jogo p {
+  color: #0040A3;
+  background: #CCE5FF;
+  padding: 10px;
+  border-radius: 8px;
+}
+
 /* Estilo dos Labels */
 label {
   font-size: 1.2em;
@@ -186,16 +209,16 @@ form {
 .palavra-secreta {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 10% 0 4% 0;
 }
 
 .letra {
   border: 3px solid #333;
   border-radius: 10px;
-  padding: 15px;
-  margin: 0 10px;
-  width: 50px;
-  height: 70px;
+  padding: .5em;
+  margin: 0 .2em;
+  width: 7.5%;
+  height: 7.5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -207,7 +230,7 @@ form {
 }
 
 .letra-correta {
-  background-color: #4CAF50;
+  background-color: #28A745;
   transform: scale(1.1);
 }
 
@@ -221,4 +244,22 @@ img {
   width: 40%;
   height: 40%;
   margin-left: 25%;
+}
+
+/* Feedback  */
+span {
+  font-weight: 600;
+}
+
+p .mensagem-feedback {
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+.mensagem-vitoria {
+  color: green;
+}
+
+.mensagem-derrota {
+  color: red;
 }

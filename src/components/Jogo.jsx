@@ -4,11 +4,7 @@ import gifsErrou from "../assets/Smolverse/errou/errouImages";
 import gifsAcertou from "../assets/Smolverse/acertou/acertouImages";
 import gifsVitoria from "../assets/Smolverse/vitoria/vitoriaImages";
 import gifsDerrota from "../assets/Smolverse/derrota/derrotaImages";
-
-const palavrasPorCategoria = {
-  frutas: ["banana", "maçã", "abacaxi"],
-  animais: ["gato", "cachorro", "elefante"],
-};
+import { palavrasPorCategoria } from "../data/data";
 
 const obterImagemAleatoria = (imagens) => {
   return imagens[Math.floor(Math.random() * imagens.length)];
@@ -59,7 +55,7 @@ const Jogo = ({ nome, categoria, onVoltar }) => {
 
     if (tentativas >= 5 && !palavra.includes(letra)) {
       setFimDeJogo(true);
-      setMensagem(`Você perdeu! A palavra era: ${palavra}`);
+      setMensagem(`Você perdeu! Mais sorte na próxima`);
       setVitoria(false);
       salvarPontuacao(0);
       setImagem(obterImagemAleatoria(gifsDerrota));
@@ -117,19 +113,36 @@ const Jogo = ({ nome, categoria, onVoltar }) => {
               acertos.includes(letra) ? "letra-correta" : ""
             }`}
           >
-            {acertos.includes(letra) ? letra : "_"}
+            {acertos.includes(letra) ? letra : "?"}
           </div>
         ))}
       </div>
-      <input
-        type="text"
-        maxLength="1"
-        onChange={(e) => handlePalpite(e.target.value)}
-        disabled={fimDeJogo}
-      />
-      <p>Palpites: {palpites}</p>
-      <p>Tentativas restantes: {6 - tentativas}</p>
-      {fimDeJogo && <p>{mensagem}</p>}
+      <div className="input-do-jogo">
+        <input
+          type="text"
+          maxLength="1"
+          onChange={(e) => handlePalpite(e.target.value)}
+          disabled={fimDeJogo}
+        />
+        <p> ⬅ Insira uma letra</p>
+      </div>
+      <p>
+        Palpites: <span>{palpites}</span>
+      </p>
+      <p>
+        Tentativas restantes: <span>{6 - tentativas}</span>
+      </p>
+      <p>
+        {fimDeJogo && (
+          <p
+            className={`mensagem-feedback ${
+              vitoria ? "mensagem-vitoria" : "mensagem-derrota"
+            }`}
+          >
+            {mensagem}
+          </p>
+        )}
+      </p>
       {imagem && (
         <img
           src={imagem}
