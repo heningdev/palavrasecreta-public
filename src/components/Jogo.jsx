@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
+import supabase from "./supabaseClient";
 import gifsErrou from "../assets/Smolverse/errou/errouImages";
 import gifsAcertou from "../assets/Smolverse/acertou/acertouImages";
 import gifsVitoria from "../assets/Smolverse/vitoria/vitoriaImages";
 import gifsDerrota from "../assets/Smolverse/derrota/derrotaImages";
-
-const supabaseUrl = "https://gkciswrmuqzocmudnmgc.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdrY2lzd3JtdXF6b2NtdWRubWdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjg1MjE3NDksImV4cCI6MjA0NDA5Nzc0OX0.JEmA0nTwF5wRi6S9laUeNVrbgcLruZLltT9fvAboiOA";
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 const palavrasPorCategoria = {
   frutas: ["banana", "maçã", "abacaxi"],
