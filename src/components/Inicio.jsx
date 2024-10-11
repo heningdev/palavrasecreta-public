@@ -17,7 +17,9 @@ const Inicio = ({ onStart }) => {
 
   return (
     <div>
-      <h1 className="titulo-inicio">Qual o seu nome?</h1>
+      <h1 className="titulo-inicio">
+        What<span>Word</span>
+      </h1>
       <form>
         <label>
           <span>Nome:</span>

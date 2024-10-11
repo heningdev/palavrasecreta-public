@@ -1,8 +1,24 @@
-# React + Vite
+# Jogo da Palavra Secreta
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Visão Geral
+Este projeto é um jogo de palavras secreto desenvolvido com React e Vite, integrado com Supabase para gerenciamento de banco de dados e armazenamento de pontuações.
 
-Currently, two official plugins are available:
+## Funcionalidades Principais
+1. **Componente `Inicio.js`**:
+   - Tela inicial para inserção de nome e seleção de categoria.
+   - Validação para campos obrigatórios.
+   
+2. **Componente `Jogo.js`**:
+   - Lógica principal do jogo.
+   - Exibição de letras corretas e incorretas.
+   - Imagens dinâmicas de feedback para erros, acertos, vitória e derrota.
+   - Cálculo de pontuação e salvamento no Supabase.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+3. **Componente `Ranking.js`**:
+   - Exibição do ranking dos jogadores.
+   - Atualização em tempo real e botão de recarregar.
+
+4. **Integração com Supabase**:
+   - Conexão centralizada com o Supabase para inserção e atualização de pontuações.
+
+
