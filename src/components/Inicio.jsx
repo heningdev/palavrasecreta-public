@@ -39,7 +39,7 @@ const Inicio = ({ onStart }) => {
         </label>
         {erro && <p className="erro">{erro}</p>}
         <button type="button" onClick={handleStart}>
-          Iniciar Jogo
+          ▶ Iniciar Jogo
         </button>
       </form>
     </div>
