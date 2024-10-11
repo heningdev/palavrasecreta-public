@@ -7,21 +7,20 @@ import gifsDerrota from "../assets/Smolverse/derrota/derrotaImages";
 import { palavrasPorCategoria } from "../data/data";
 import { IoArrowUndo, IoPlay } from "react-icons/io5";
 
-// Função para obter uma imagem aleatória
 const obterImagemAleatoria = (imagens) => {
   return imagens[Math.floor(Math.random() * imagens.length)];
 };
 
 const Jogo = ({ nome, categoria, onVoltar, onJogarNovamente }) => {
-  const [palavra, setPalavra] = useState(""); // Palavra sorteada
-  const [palpites, setPalpites] = useState(""); // Palpites do jogador
-  const [acertos, setAcertos] = useState([]); // Letras acertadas
-  const [tentativas, setTentativas] = useState(0); // Contador de tentativas
-  const [fimDeJogo, setFimDeJogo] = useState(false); // Flag para fim de jogo
-  const [mensagem, setMensagem] = useState(""); // Mensagem de vitória/derrota
-  const [imagem, setImagem] = useState(""); // Imagem de feedback
-  const [tempoInicio, setTempoInicio] = useState(Date.now()); // Marca tempo inicial do jogo
-  const [vitoria, setVitoria] = useState(false); // Flag de vitória
+  const [palavra, setPalavra] = useState("");
+  const [palpites, setPalpites] = useState("");
+  const [acertos, setAcertos] = useState([]);
+  const [tentativas, setTentativas] = useState(0);
+  const [fimDeJogo, setFimDeJogo] = useState(false);
+  const [mensagem, setMensagem] = useState("");
+  const [imagem, setImagem] = useState("");
+  const [tempoInicio, setTempoInicio] = useState(Date.now());
+  const [vitoria, setVitoria] = useState(false);
 
   // Sortear palavra com base na categoria selecionada
   useEffect(() => {

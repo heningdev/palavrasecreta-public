@@ -1,4 +1,3 @@
-/* Reset e configuração básica do body */
 body {
   font-family: Arial, sans-serif;
   min-height: 100vh;
@@ -16,7 +15,6 @@ body {
   color: #fff;
 }
 
-/* Container principal */
 .container {
   display: flex;
   flex-direction: column;
@@ -24,7 +22,6 @@ body {
   padding: 20px;
 }
 
-/* Estilo do Header */
 header {
   text-align: center;
 }
@@ -47,7 +44,6 @@ h1 {
   text-underline-offset: 6px;
 }
 
-/* Conteúdo principal */
 .main-content {
   display: flex;
   justify-content: space-between;
@@ -58,7 +54,6 @@ h1 {
   width: 80vw;
   padding: 20px;
   gap: 40px;
-  /* Espaçamento entre o jogo e o ranking */
 }
 
 section {
@@ -66,7 +61,6 @@ section {
   padding: 20px;
 }
 
-/* Botões */
 button {
   background-color: #4CAF50;
   color: white;
@@ -97,15 +91,12 @@ button:disabled {
 .content-jogo {
   width: 60%;
   text-align: center;
-  /* Aumentar a área do jogo */
 }
 
 .content-ranking {
   width: 40%;
-  /* Menor largura para o ranking */
 }
 
-/* Tabela de Ranking */
 table {
   width: 100%;
   margin-top: 20px;
@@ -148,7 +139,6 @@ tr:hover {
   background-color: #ddd;
 }
 
-/* Ícone de reload */
 .fas.fa-sync-alt {
   font-size: 1em;
   color: #333;
@@ -176,7 +166,6 @@ tr:hover {
 
 .btn-att i:hover {
   transform: rotate(360deg);
-  /* Efeito de rotação ao passar o mouse */
 }
 
 
@@ -197,12 +186,10 @@ tr:hover {
   color: #fff;
 }
 
-/* Animação de rotação */
 .spin {
   animation: rotate 0.3s infinite linear;
 }
 
-/* Keyframes para a animação de rotação */
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -221,7 +208,6 @@ tr:hover {
   }
 }
 
-/* Estilo dos Inputs */
 input[type="text"],
 select {
   width: calc(50% - 22px);
@@ -256,7 +242,6 @@ select {
   border: 1px #B8DAFF solid;
 }
 
-/* Estilo dos Labels */
 label {
   font-size: 1.2em;
   color: #333;
@@ -278,13 +263,11 @@ label span {
   z-index: 10;
 }
 
-/* Container de Formulário */
 form {
   display: flex;
   flex-direction: column;
 }
 
-/* Estilo da mensagem de erro */
 .erro {
   color: #721C24;
   margin-top: 10px;
@@ -297,12 +280,10 @@ form {
   border-radius: 8px;
 }
 
-/* Estilo das letras da palavra secreta */
 .palavra-secreta {
   display: flex;
   justify-content: center;
   gap: 1em;
-  /* Melhorar espaçamento entre as letras */
   margin: 10% 0 4% 0;
 }
 
@@ -386,13 +367,11 @@ form {
   border: 1px #FFEEBA solid;
 }
 
-/* Imagem Personagem */
 img {
   width: 60%;
   height: 60%;
 }
 
-/* Feedback  */
 span {
   font-weight: 600;
 }
@@ -464,7 +443,6 @@ p .mensagem-feedback {
   border-radius: 50%;
 }
 
-/* Estilos para o botão de documentação */
 .botao-documentacao {
   position: fixed;
   bottom: 20px;
@@ -486,7 +464,6 @@ p .mensagem-feedback {
   background-color: #45a049;
 }
 
-/* Estilos para o modal */
 .modal {
   display: flex;
   justify-content: center;
@@ -514,7 +491,6 @@ p .mensagem-feedback {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Botão de fechar o modal */
 .fechar {
   color: #aaa;
   float: right;
@@ -531,7 +507,6 @@ p .mensagem-feedback {
   cursor: pointer;
 }
 
-/* Estilo para a documentação do usuário */
 .documentacao-container {
   padding: 20px;
   background-color: #ffffff;

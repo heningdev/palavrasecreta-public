@@ -36,7 +36,7 @@ const Inicio = ({ onStart }) => {
             <input
               type="text"
               value={nome}
-              onChange={(e) => setNome(e.target.value)} // Atualiza o estado do nome
+              onChange={(e) => setNome(e.target.value)}
             />
           </div>
         </label>
@@ -44,7 +44,7 @@ const Inicio = ({ onStart }) => {
           <span>Categoria:</span>
           <select
             value={categoria}
-            onChange={(e) => setCategoria(e.target.value)} // Atualiza o estado da categoria
+            onChange={(e) => setCategoria(e.target.value)}
           >
             <option value="">Selecione uma categoria</option>
             <option value="frutas">Frutas</option>
@@ -59,7 +59,7 @@ const Inicio = ({ onStart }) => {
             <option value="comidas">Comidas</option>
           </select>
         </label>
-        {erro && <p className="erro">{erro}</p>} {/* Exibe erro se houver */}
+        {erro && <p className="erro">{erro}</p>}
         <button type="button" onClick={handleStart}>
           <IoPlay className="icon" />
           Iniciar Jogo

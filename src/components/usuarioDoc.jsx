@@ -1,5 +1,5 @@
 import React from "react";
-import "../App.css"; // Certifique-se de importar o arquivo CSS
+import "../App.css";
 
 const DocumentacaoUsuario = () => (
   <div className="documentacao-container">

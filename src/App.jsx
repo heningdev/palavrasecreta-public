@@ -47,7 +47,7 @@ const App = () => {
     setJogando(false);
     setTimeout(() => {
       setJogando(true);
-    }, 100); // Um pequeno atraso para reiniciar o jogo
+    }, 100);
   };
 
   const abrirModal = () => {
