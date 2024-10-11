@@ -36,6 +36,13 @@ WhatWord é um jogo de palavras secretas desenvolvido com React e Vite, integrad
 4. **Integração com Supabase**:
    - Conexão centralizada com o Supabase para inserção e atualização de pontuações.
 
+5. **Background Dinâmico**:
+   - O projeto possui uma funcionalidade de background dinâmico que muda de acordo com a hora do dia, proporcionando uma experiência visual imersiva e condizente com o horário local do usuário.
+  
+6. **Feedback Visual**:
+   - Imagens de personagens que reagem aos erros, acertos, vitórias e derrotas.
+
+
 ## Instalação
 
 Siga os passos abaixo para instalar e executar o projeto localmente:
