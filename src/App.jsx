@@ -18,19 +18,12 @@ const App = () => {
   const [jogando, setJogando] = useState(false);
   const [exibindoModal, setExibindoModal] = useState(false);
 
-  const iniciarJogo = (nome, categoria) => {
-    setNome(nome);
-    setCategoria(categoria);
-    setJogando(true);
-  };
-
-  const voltarInicio = () => {
-    setNome("");
-    setCategoria("");
-    setJogando(false);
-  };
-
   useEffect(() => {
+    const nomeArmazenado = localStorage.getItem("nome");
+    if (nomeArmazenado) {
+      setNome(nomeArmazenado);
+    }
+
     const horaAtual = new Date().getHours();
     const imagens =
       horaAtual >= 6 && horaAtual < 18 ? imagensDia : imagensNoite;
@@ -38,6 +31,24 @@ const App = () => {
     document.body.style.backgroundImage = `url(${imagemSelecionada})`;
     document.body.style.backgroundSize = "cover";
   }, []);
+
+  const iniciarJogo = (nome, categoria) => {
+    setNome(nome);
+    setCategoria(categoria);
+    setJogando(true);
+  };
+
+  const voltarInicio = () => {
+    setCategoria("");
+    setJogando(false);
+  };
+
+  const onJogarNovamente = () => {
+    setJogando(false);
+    setTimeout(() => {
+      setJogando(true);
+    }, 100); // Um pequeno atraso para reiniciar o jogo
+  };
 
   const abrirModal = () => {
     setExibindoModal(true);
@@ -53,7 +64,12 @@ const App = () => {
       <div className="main-content">
         <section className="content-jogo">
           {jogando ? (
-            <Jogo nome={nome} categoria={categoria} onVoltar={voltarInicio} />
+            <Jogo
+              nome={nome}
+              categoria={categoria}
+              onVoltar={voltarInicio}
+              onJogarNovamente={onJogarNovamente}
+            />
           ) : (
             <Inicio onStart={iniciarJogo} />
           )}

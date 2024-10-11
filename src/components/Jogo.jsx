@@ -11,7 +11,7 @@ const obterImagemAleatoria = (imagens) => {
   return imagens[Math.floor(Math.random() * imagens.length)];
 };
 
-const Jogo = ({ nome, categoria, onVoltar }) => {
+const Jogo = ({ nome, categoria, onVoltar, onJogarNovamente }) => {
   const [palavra, setPalavra] = useState(""); // Palavra sorteada
   const [palpites, setPalpites] = useState(""); // Palpites do jogador
   const [acertos, setAcertos] = useState([]); // Letras acertadas
@@ -68,7 +68,13 @@ const Jogo = ({ nome, categoria, onVoltar }) => {
     // Verifica se o jogador perdeu (mais de 5 tentativas erradas)
     if (tentativas >= 5 && !palavra.includes(letra)) {
       setFimDeJogo(true);
-      setMensagem("Você perdeu! Mais sorte na próxima vez.");
+      setMensagem(
+        <>
+          Você perdeu! Mais sorte na próxima vez. <br />A palavra era{" "}
+          <strong>{palavra}</strong>
+        </>
+      );
+
       setVitoria(false);
       salvarPontuacao(0); // Salva pontuação 0 em caso de derrota
       setImagem(obterImagemAleatoria(gifsDerrota)); // Exibe imagem de derrota
@@ -78,7 +84,15 @@ const Jogo = ({ nome, categoria, onVoltar }) => {
   // Função para calcular pontuação com base nas tentativas e tempo
   const calcularPontuacao = (tentativas, inicio, fim) => {
     const tempo = (fim - inicio) / 1000; // Calcula o tempo em segundos
-    return Math.max(1000 - (tentativas * 100 + tempo * 10), 0); // Fórmula para calcular pontuação
+    const pontuacaoBase = 100; // Pontuação inicial
+    const penalidadeTentativas = tentativas * 50; // 50 pontos por tentativa incorreta
+    const tempoGasto = tempo < 60 ? 200 - tempo : 0; // Bônus de tempo, até 200 pontos se terminar em menos de 60 segundos
+    const pontuacaoFinal = Math.max(
+      pontuacaoBase - penalidadeTentativas + tempoGasto,
+      100
+    ); // pontuação mínima de 100 pontos
+
+    return pontuacaoFinal;
   };
 
   // Função para salvar a pontuação no banco de dados
@@ -121,8 +135,8 @@ const Jogo = ({ nome, categoria, onVoltar }) => {
   };
 
   return (
-    <div>
-      <h1>Bem-vindo, {nome}!</h1>
+    <div className="jogo-page">
+      <h1>Bem-vindo(a), {nome}!</h1>
       <h4>
         Categoria: <span className="categoria-info">{categoria}</span>
       </h4>
@@ -177,11 +191,12 @@ const Jogo = ({ nome, categoria, onVoltar }) => {
           )}
         </div>
       </div>
-      <div>
+      <div className="btn-content-fim">
         {fimDeJogo && (
-          <button onClick={onVoltar}>
-            {vitoria ? "Voltar" : "Tentar Novamente"}
-          </button>
+          <div>
+            <button onClick={onJogarNovamente}>Jogar Novamente</button>
+            <button onClick={onVoltar}>Voltar</button>
+          </div>
         )}
       </div>
     </div>

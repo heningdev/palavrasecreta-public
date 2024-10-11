@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Inicio = ({ onStart }) => {
   const [nome, setNome] = useState("");
   const [categoria, setCategoria] = useState("");
   const [erro, setErro] = useState("");
+
+  useEffect(() => {
+    const nomeArmazenado = localStorage.getItem("nome");
+    if (nomeArmazenado) {
+      setNome(nomeArmazenado);
+    }
+  }, []);
 
   // Função para lidar com o início do jogo
   const handleStart = () => {
@@ -11,6 +18,7 @@ const Inicio = ({ onStart }) => {
       setErro("Por favor, preencha todos os campos.");
       return;
     }
+    localStorage.setItem("nome", nome); // Armazena o nome no local storage
     setErro(""); // Limpa a mensagem de erro se os campos estiverem preenchidos
     onStart(nome, categoria); // Passa os dados para o componente pai
   };
@@ -23,11 +31,13 @@ const Inicio = ({ onStart }) => {
       <form>
         <label>
           <span>Nome:</span>
-          <input
-            type="text"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)} // Atualiza o estado do nome
-          />
+          <div className="input-nome">
+            <input
+              type="text"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)} // Atualiza o estado do nome
+            />
+          </div>
         </label>
         <label>
           <span>Categoria:</span>
@@ -42,11 +52,18 @@ const Inicio = ({ onStart }) => {
             <option value="cores">Cores</option>
             <option value="profissoes">Profissões</option>
             <option value="objetos">Objetos</option>
+            <option value="esportes">Esportes</option>
+            <option value="carros">Carros</option>
+            <option value="filmes">Filmes</option>
+            <option value="comidas">Comidas</option>
           </select>
         </label>
         {erro && <p className="erro">{erro}</p>} {/* Exibe erro se houver */}
         <button type="button" onClick={handleStart}>
           ▶ Iniciar Jogo
+        </button>
+        <button className="btn-nome" type="button" onClick={() => setNome("")}>
+          👤 Trocar Nome
         </button>
       </form>
     </div>

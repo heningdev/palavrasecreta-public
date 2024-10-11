@@ -76,7 +76,7 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
   width: 35%;
-  margin-top: 5%;
+  margin-top: 2%;
   align-self: center;
 }
 
@@ -570,4 +570,19 @@ p .mensagem-feedback {
 
 .documentacao-container li {
   margin-bottom: 10px;
+}
+
+.btn-content-fim button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  padding: 10px 20px;
+}
+
+.jogo-page .btn-content-fim {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
