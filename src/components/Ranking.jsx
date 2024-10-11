@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
 import supabase from "./supabaseClient";
 
 const Ranking = () => {
@@ -27,14 +26,11 @@ const Ranking = () => {
 
   return (
     <div>
-      <h1>Ranking Global </h1>
-      <div className="btn-att">
-        <i
-          className={`fas fa-sync-alt ${loading ? "spin" : ""}`}
-          onClick={fetchRanking}
-        ></i>
+      <h1 className="titulo-ranking">Ranking</h1>
+      <button className="btn-att" onClick={fetchRanking}>
+        <i className={`fas fa-sync-alt ${loading ? "spin" : ""}`}></i>
         <p className="text-att">Atualizar</p>
-      </div>
+      </button>
       <table>
         <thead>
           <tr>

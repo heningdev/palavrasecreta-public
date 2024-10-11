@@ -5,32 +5,33 @@ const Inicio = ({ onStart }) => {
   const [categoria, setCategoria] = useState("");
   const [erro, setErro] = useState("");
 
+  // Função para lidar com o início do jogo
   const handleStart = () => {
     if (!nome || !categoria) {
       setErro("Por favor, preencha todos os campos.");
       return;
     }
-    setErro("");
-    onStart(nome, categoria);
+    setErro(""); // Limpa a mensagem de erro se os campos estiverem preenchidos
+    onStart(nome, categoria); // Passa os dados para o componente pai
   };
 
   return (
     <div>
-      <h1></h1>
+      <h1 className="titulo-inicio">Qual o seu nome?</h1>
       <form>
         <label>
-          Nome:
+          <span>Nome:</span>
           <input
             type="text"
             value={nome}
-            onChange={(e) => setNome(e.target.value)}
+            onChange={(e) => setNome(e.target.value)} // Atualiza o estado do nome
           />
         </label>
         <label>
-          Categoria:
+          <span>Categoria:</span>
           <select
             value={categoria}
-            onChange={(e) => setCategoria(e.target.value)}
+            onChange={(e) => setCategoria(e.target.value)} // Atualiza o estado da categoria
           >
             <option value="">Selecione uma categoria</option>
             <option value="frutas">Frutas</option>
@@ -41,7 +42,7 @@ const Inicio = ({ onStart }) => {
             <option value="objetos">Objetos</option>
           </select>
         </label>
-        {erro && <p className="erro">{erro}</p>}
+        {erro && <p className="erro">{erro}</p>} {/* Exibe erro se houver */}
         <button type="button" onClick={handleStart}>
           ▶ Iniciar Jogo
         </button>

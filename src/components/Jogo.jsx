@@ -6,26 +6,29 @@ import gifsVitoria from "../assets/Smolverse/vitoria/vitoriaImages";
 import gifsDerrota from "../assets/Smolverse/derrota/derrotaImages";
 import { palavrasPorCategoria } from "../data/data";
 
+// Função para obter uma imagem aleatória
 const obterImagemAleatoria = (imagens) => {
   return imagens[Math.floor(Math.random() * imagens.length)];
 };
 
 const Jogo = ({ nome, categoria, onVoltar }) => {
-  const [palavra, setPalavra] = useState("");
-  const [palpites, setPalpites] = useState("");
-  const [acertos, setAcertos] = useState([]);
-  const [tentativas, setTentativas] = useState(0);
-  const [fimDeJogo, setFimDeJogo] = useState(false);
-  const [mensagem, setMensagem] = useState("");
-  const [imagem, setImagem] = useState("");
-  const [tempoInicio, setTempoInicio] = useState(Date.now());
-  const [vitoria, setVitoria] = useState(false);
+  const [palavra, setPalavra] = useState(""); // Palavra sorteada
+  const [palpites, setPalpites] = useState(""); // Palpites do jogador
+  const [acertos, setAcertos] = useState([]); // Letras acertadas
+  const [tentativas, setTentativas] = useState(0); // Contador de tentativas
+  const [fimDeJogo, setFimDeJogo] = useState(false); // Flag para fim de jogo
+  const [mensagem, setMensagem] = useState(""); // Mensagem de vitória/derrota
+  const [imagem, setImagem] = useState(""); // Imagem de feedback
+  const [tempoInicio, setTempoInicio] = useState(Date.now()); // Marca tempo inicial do jogo
+  const [vitoria, setVitoria] = useState(false); // Flag de vitória
 
+  // Sortear palavra com base na categoria selecionada
   useEffect(() => {
     const palavras = palavrasPorCategoria[categoria.toLowerCase()];
     setPalavra(palavras[Math.floor(Math.random() * palavras.length)]);
   }, [categoria]);
 
+  // Verifica se o jogador acertou a palavra inteira
   useEffect(() => {
     if (
       palavra &&
@@ -34,42 +37,55 @@ const Jogo = ({ nome, categoria, onVoltar }) => {
       setFimDeJogo(true);
       setVitoria(true);
       setMensagem("Parabéns, você ganhou!");
+
+      // Calcula a pontuação com base nas tentativas e no tempo gasto
       const tempoFinal = Date.now();
       const pontuacao = calcularPontuacao(tentativas, tempoInicio, tempoFinal);
       salvarPontuacao(pontuacao);
+
+      // Exibe uma imagem de vitória
       setImagem(obterImagemAleatoria(gifsVitoria));
     }
   }, [acertos]);
 
+  // Lida com o palpite do jogador
   const handlePalpite = (letra) => {
+    // Impede palpites repetidos ou jogo já encerrado
     if (palpites.includes(letra) || fimDeJogo) return;
 
     setPalpites(palpites + letra);
+
     if (palavra.includes(letra)) {
+      // Se a letra estiver correta, adiciona à lista de acertos
       setAcertos([...acertos, letra]);
-      setImagem(obterImagemAleatoria(gifsAcertou));
+      setImagem(obterImagemAleatoria(gifsAcertou)); // Exibe imagem de acerto
     } else {
+      // Se a letra estiver errada, incrementa o contador de tentativas
       setTentativas(tentativas + 1);
-      setImagem(obterImagemAleatoria(gifsErrou));
+      setImagem(obterImagemAleatoria(gifsErrou)); // Exibe imagem de erro
     }
 
+    // Verifica se o jogador perdeu (mais de 5 tentativas erradas)
     if (tentativas >= 5 && !palavra.includes(letra)) {
       setFimDeJogo(true);
-      setMensagem(`Você perdeu! Mais sorte na próxima`);
+      setMensagem("Você perdeu! Mais sorte na próxima vez.");
       setVitoria(false);
-      salvarPontuacao(0);
-      setImagem(obterImagemAleatoria(gifsDerrota));
+      salvarPontuacao(0); // Salva pontuação 0 em caso de derrota
+      setImagem(obterImagemAleatoria(gifsDerrota)); // Exibe imagem de derrota
     }
   };
 
+  // Função para calcular pontuação com base nas tentativas e tempo
   const calcularPontuacao = (tentativas, inicio, fim) => {
-    const tempo = (fim - inicio) / 1000;
-    return Math.max(1000 - (tentativas * 100 + tempo * 10), 0);
+    const tempo = (fim - inicio) / 1000; // Calcula o tempo em segundos
+    return Math.max(1000 - (tentativas * 100 + tempo * 10), 0); // Fórmula para calcular pontuação
   };
 
+  // Função para salvar a pontuação no banco de dados
   const salvarPontuacao = async (pontuacao) => {
-    const pontuacaoInteira = Math.round(pontuacao);
+    const pontuacaoInteira = Math.round(pontuacao); // Arredonda a pontuação para inteiro
 
+    // Verifica se o usuário já existe no ranking
     const { data: usuarioExistente, error: erroBusca } = await supabase
       .from("ranking")
       .select("pontuacao")
@@ -82,6 +98,7 @@ const Jogo = ({ nome, categoria, onVoltar }) => {
     }
 
     if (usuarioExistente) {
+      // Se o usuário já existir, atualiza a pontuação
       const novaPontuacao = usuarioExistente.pontuacao + pontuacaoInteira;
       const { error: erroAtualizacao } = await supabase
         .from("ranking")
@@ -92,6 +109,7 @@ const Jogo = ({ nome, categoria, onVoltar }) => {
         console.error("Erro ao atualizar a pontuação:", erroAtualizacao);
       }
     } else {
+      // Se o usuário não existir, insere um novo registro no ranking
       const { error: erroInsercao } = await supabase
         .from("ranking")
         .insert([{ nome, pontuacao: pontuacaoInteira }]);
@@ -129,36 +147,43 @@ const Jogo = ({ nome, categoria, onVoltar }) => {
         />
         <p> ⬅ Insira uma letra</p>
       </div>
-      <p>
-        Palpites: <span className="palpites">{palpites}</span>
-      </p>
-      <p>
-        Tentativas restantes:{" "}
-        <span className="tentativas">{6 - tentativas}</span>
-      </p>
-      <p>
-        {fimDeJogo && (
-          <p
-            className={`mensagem-feedback ${
-              vitoria ? "mensagem-vitoria" : "mensagem-derrota"
-            }`}
-          >
-            {mensagem}
+      <div className="inferior-content">
+        <div className="content-1">
+          <p>
+            Palpites: <span className="palpites">{palpites}</span>
           </p>
+          <p>
+            Tentativas restantes:{" "}
+            <span className="tentativas">{6 - tentativas}</span>
+          </p>
+
+          {fimDeJogo && (
+            <p
+              className={`mensagem-feedback ${
+                vitoria ? "mensagem-vitoria" : "mensagem-derrota"
+              }`}
+            >
+              {mensagem}
+            </p>
+          )}
+        </div>
+        <div className="content-2">
+          {imagem && (
+            <img
+              src={imagem}
+              alt="Resultado do Jogo"
+              className="imagem-personagem"
+            />
+          )}
+        </div>
+      </div>
+      <div>
+        {fimDeJogo && (
+          <button onClick={onVoltar}>
+            {vitoria ? "Voltar" : "Tentar Novamente"}
+          </button>
         )}
-      </p>
-      {imagem && (
-        <img
-          src={imagem}
-          alt="Resultado do Jogo"
-          className="imagem-personagem"
-        />
-      )}
-      {fimDeJogo && (
-        <button onClick={onVoltar}>
-          {vitoria ? "Voltar" : "Tentar Novamente"}
-        </button>
-      )}
+      </div>
     </div>
   );
 };
