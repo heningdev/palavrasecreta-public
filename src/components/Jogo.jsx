@@ -4,6 +4,8 @@ import gifsErrou from "../assets/Smolverse/errou/errouImages";
 import gifsAcertou from "../assets/Smolverse/acertou/acertouImages";
 import gifsVitoria from "../assets/Smolverse/vitoria/vitoriaImages";
 import gifsDerrota from "../assets/Smolverse/derrota/derrotaImages";
+import iconGame from "../assets/icons/game.svg";
+import iconMenu from "../assets/icons/menu.svg";
 import { palavrasPorCategoria } from "../data/data";
 
 // Função para obter uma imagem aleatória
@@ -193,9 +195,15 @@ const Jogo = ({ nome, categoria, onVoltar, onJogarNovamente }) => {
       </div>
       <div className="btn-content-fim">
         {fimDeJogo && (
-          <div>
-            <button onClick={onJogarNovamente}>Jogar Novamente</button>
-            <button onClick={onVoltar}>Voltar</button>
+          <div className="container-btn">
+            <button onClick={onJogarNovamente}>
+              <img src={iconGame} alt="Trocar Nome Icone" className="icon" />
+              Jogar Novamente
+            </button>
+            <button onClick={onVoltar}>
+              <img src={iconMenu} alt="Trocar Nome Icone" className="icon" />
+              Voltar
+            </button>
           </div>
         )}
       </div>

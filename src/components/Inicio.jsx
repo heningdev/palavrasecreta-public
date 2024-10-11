@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import iconUser from "../assets/icons/users.svg";
+import iconGame from "../assets/icons/game.svg";
 
 const Inicio = ({ onStart }) => {
   const [nome, setNome] = useState("");
@@ -60,10 +62,12 @@ const Inicio = ({ onStart }) => {
         </label>
         {erro && <p className="erro">{erro}</p>} {/* Exibe erro se houver */}
         <button type="button" onClick={handleStart}>
-          ▶ Iniciar Jogo
+          <img src={iconGame} alt="Trocar Nome Icone" className="icon" />{" "}
+          Iniciar Jogo
         </button>
         <button className="btn-nome" type="button" onClick={() => setNome("")}>
-          👤 Trocar Nome
+          <img src={iconUser} alt="Trocar Nome Icone" className="icon" /> Trocar
+          Nome
         </button>
       </form>
     </div>

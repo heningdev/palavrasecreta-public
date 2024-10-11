@@ -572,12 +572,12 @@ p .mensagem-feedback {
   margin-bottom: 10px;
 }
 
-.btn-content-fim button {
+.btn-content-fim .container-btn {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  width: 100vw;
   padding: 10px 20px;
 }
 
@@ -585,4 +585,11 @@ p .mensagem-feedback {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
 }
