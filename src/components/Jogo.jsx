@@ -105,6 +105,9 @@ const Jogo = ({ nome, categoria, onVoltar }) => {
   return (
     <div>
       <h1>Bem-vindo, {nome}!</h1>
+      <h4>
+        Categoria: <span className="categoria-info">{categoria}</span>
+      </h4>
       <div className="palavra-secreta">
         {palavra.split("").map((letra, i) => (
           <div
@@ -127,10 +130,11 @@ const Jogo = ({ nome, categoria, onVoltar }) => {
         <p> ⬅ Insira uma letra</p>
       </div>
       <p>
-        Palpites: <span>{palpites}</span>
+        Palpites: <span className="palpites">{palpites}</span>
       </p>
       <p>
-        Tentativas restantes: <span>{6 - tentativas}</span>
+        Tentativas restantes:{" "}
+        <span className="tentativas">{6 - tentativas}</span>
       </p>
       <p>
         {fimDeJogo && (
